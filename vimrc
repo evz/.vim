@@ -424,26 +424,6 @@ nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gp :Gpush<CR>
 vnoremap <leader>gb :Gblame<CR>
 
-" =================== Vim-cfmt ===================
-let g:cfmt_style = '-linux'
-"autocmd BufWritePre *.c,*.h Cfmt
-
-" ================== linuxsty ====================
-"let g:linuxsty_patterns = ['/usr/src/', '/linux']
-
-" ==================== Vim-go ====================
-let g:go_fmt_fail_silently = 0
-let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_term_enabled = 1
-let g:go_snippet_engine = "neosnippet"
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 0
-let g:go_highlight_operators = 0
-let g:go_highlight_build_constraints = 1
-
 
 au FileType go nmap <Leader>s <Plug>(go-def-split)
 au FileType go nmap <Leader>v <Plug>(go-def-vertical)
@@ -459,40 +439,12 @@ au FileType go nmap <Leader>d <Plug>(go-doc)
 
 au FileType go nmap <Leader>e <Plug>(go-rename)
 
-" neovim specific
-if has('nvim')
-  au FileType go nmap <leader>rt <Plug>(go-run-tab)
-  au FileType go nmap <Leader>rs <Plug>(go-run-split)
-  au FileType go nmap <Leader>rv <Plug>(go-run-vertical)
-endif
-
-" I like these more!
-augroup go
-  autocmd!
-  autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup END
-
 " ==================== delimitMate ====================
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_expand_space = 1
 let g:delimitMate_smart_quotes = 1
 let g:delimitMate_expand_inside_quotes = 0
 let g:delimitMate_smart_matchpairs = '^\%(\w\|\$\)'
-
-"==================== NerdTree ====================
-" For toggling
-nmap <C-n> :NERDTreeToggle<CR>
-noremap <Leader>n :NERDTreeToggle<cr>
-noremap <Leader>f :NERDTreeFind<cr>
-
-let NERDTreeShowHidden=1
-
-let NERDTreeIgnore=['\.vim$', '\~$', '\.git$', '.DS_Store']
-
-" Close nerdtree and vim on close file
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " ==================== vim-json ====================
 let g:vim_json_syntax_conceal = 0
@@ -539,12 +491,6 @@ endfunction
 " auto strip whitespace except for file with extention blacklisted
 let blacklist = ['markdown', 'md']
 autocmd BufWritePre * StripWhitespace
-
-" ================= clang-format ==================
-
-map <C-K> :pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
-imap <C-K> <c-o>:pyf /usr/share/vim/addons/syntax/clang-format-3.8.py<cr>
-autocmd BufWritePre *.cpp,*.hpp pyf /usr/share/vim/addons/syntax/clang-format-3.8.py
 
 " =================== vim-airline ========================
 
